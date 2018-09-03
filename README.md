@@ -1,2 +1,2 @@
 # store
-Esto es uno escribir para me.
+Esto es el escribiendo para me.
