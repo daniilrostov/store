@@ -10,7 +10,7 @@
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
 				</ul>
 			</li>
-			<li class="subMenu"><a> CLOTHES [840] </a>
+			<li class="subMenu"><a> CLOTHES [740] </a>
 			<ul style="display:none">
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
 				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>												
