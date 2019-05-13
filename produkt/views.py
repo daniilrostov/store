@@ -8,8 +8,15 @@ from produkt.models import Produkt
 
 	
 def produkt(request):	
-	latest_produkt = Produkt.objects.all()
-	return render(request, "index.html", {'latest_produkt' : latest_produkt})
+	produkt = Produkt.objects.filter(status='recomend')
+	latest_produkt = Produkt.objects.filter(status='lost')
+	tea_produkt = Produkt.objects.filter(group='tea')
+	electronic_produkt = Produkt.objects.filter(group='electronic')
+	tea_produkt_count = tea_produkt.count()
+	electronic_produkt_count = electronic_produkt.count()
+	group = [['Электроника', tea_produkt_count, 'Роутеры'], ['Чай', tea_produkt_count, 'Зелёный']]
+	return render(request, "index.html", {'latest_produkt' : latest_produkt, 'produkt' : produkt,
+	'group' : group})
 
 def special_offer(request):
 	return render(request, "special_offer.html")
@@ -26,4 +33,6 @@ def product_details(request):
 	photo3 = detail_produkt.photo3
 	prise = detail_produkt.prise
 	name = detail_produkt.name
-	return render(request, "product_details.html", {'photo' : photo, 'photo1' : photo1, 'photo2' : photo2, 'photo3' : photo3, 'prise' : prise, 'name' : name})
+	text = detail_produkt.text
+	return render(request, "product_details.html", {'photo' : photo, 'photo1' : photo1, 
+	'photo2' : photo2, 'photo3' : photo3, 'prise' : prise, 'name' : name, 'text' : text})
