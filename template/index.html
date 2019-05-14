@@ -9,7 +9,7 @@
 		<div class="carousel-inner">
 		  <div class="item active">
 		  <div class="container">
-			<a href="register.html"><img style="width:100%" src="{% static 'themes/images/carousel/1.png' %}" alt="Специальное предложение"/></a>
+			<a href="{{MEDIA_URL}}{{carusel.photo}}"><img style="width:100%; height=200px" src="{{MEDIA_URL}}{{carusel.photo}}" alt=""/></a>
 			<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -18,7 +18,7 @@
 		  </div>
 		  <div class="item">
 		  <div class="container">
-			<a href="register.html"><img style="width:100%" src="{% static 'themes/images/carousel/2.png' %}" alt=""/></a>
+			<a href="{{MEDIA_URL}}{{carusel.photo1}}"><img style="width:100%" src="{{MEDIA_URL}}{{carusel.photo1}}" alt=""/></a>
 				<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -27,37 +27,8 @@
 		  </div>
 		  <div class="item">
 		  <div class="container">
-			<a href="register.html"><img src="{% static 'themes/images/carousel/3.png' %}" alt=""/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-				</div>
-			
-		  </div>
-		  </div>
-		   <div class="item">
-		   <div class="container">
-			<a href="register.html"><img src="{% static 'themes/images/carousel/4.png' %}" alt=""/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-				</div>
-		   
-		  </div>
-		  </div>
-		   <div class="item">
-		   <div class="container">
-			<a href="register.html"><img src="{% static 'themes/images/carousel/5.png' %}" alt=""/></a>
-			<div class="carousel-caption">
-				  <h4>Second Thumbnail label</h4>
-				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-			</div>
-		  </div>
-		  </div>
-		   <div class="item">
-		   <div class="container">
-			<a href="register.html"><img src="{% static 'themes/images/carousel/6.png' %}" alt=""/></a>
-			<div class="carousel-caption">
+			<a href="{{MEDIA_URL}}{{carusel.photo2}}"><img style="width:100%" src="{{MEDIA_URL}}{{carusel.photo2}}" alt=""/></a>
+				<div class="carousel-caption">
 				  <h4>Second Thumbnail label</h4>
 				  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 				</div>
@@ -77,41 +48,27 @@
 		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
 			
-			{% for i in range(len(group)) %}
 			
-			<li class="subMenu open"><a>{{i.group[0]}}</a>
+			
+			<li class="subMenu open"><a>Чай ({{tea_produkt_count}})</a>
 				<ul>
-				<li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Mobile Phone (80)</a></li>
-				<li><a href="products.html"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
+				{% for i in tea_produkt %}
+				<li><a class="active" href="product_details.html/?id={{i.name}}" value="{{i.name}}"><i class="icon-chevron-right"></i>{{i.name}}</a></li>
+				{% endfor %}
 				</ul>
 			</li>
-			
-			
+			<li class="subMenu open"><a>Электроника ({{electronic_produkt_count}})</a>
+				<ul>
+				{% for i in electronic_produkt %}
+				<li><a class="active" href="product_details.html/?id={{i.name}}" value="{{i.name}}"><i class="icon-chevron-right"></i>{{i.name}}</a></li>
+				{% endfor %}
+				</ul>
+			</li>
+			 
 			
 		</ul>
 		<br/>
-		  <div class="thumbnail">
-			<img src="themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera"/>
-			<div class="caption">
-			  <h5>Panasonic</h5>
-				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-			</div>
-		  </div><br/>
-			<div class="thumbnail">
-				<img src="themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
-				<div class="caption">
-				  <h5>Kindle</h5>
-				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-				</div>
-			  </div><br/>
-			<div class="thumbnail">
-				<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
-				<div class="caption">
-				  <h5>Payment Methods</h5>
-				</div>
-			  </div>
+		 
 	</div> 
 <!-- Sidebar end=============================================== -->
 
@@ -144,7 +101,7 @@
 			  </div>
 			  </div>
 		</div>
-		<h4>Последние продукты </h4>
+		<h4>Новые продукты </h4>
 			  <ul class="thumbnails">
 			    {% for i in latest_produkt %}
 				<li class="span3">
