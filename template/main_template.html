@@ -47,7 +47,7 @@
 		<a href="/product_summary.html"><span>&pound;</span></a>
 		<span class="btn btn-mini">$155.00</span>
 		<a href="/product_summary.html"><span class="">$</span></a>
-		<a href="/product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+		<a href="/product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Покупки в карзине </span> </a> 
 	</div>
 	</div>
 </div>
@@ -81,21 +81,17 @@
 			<h3>Login Block</h3>
 		  </div>
 		  <div class="modal-body">
-			<form class="form-horizontal loginFrm">
-			  <div class="control-group">								
-				<input type="text" id="inputEmail" placeholder="Email">
-			  </div>
-			  <div class="control-group">
-				<input type="password" id="inputPassword" placeholder="Password">
-			  </div>
+			<form class="form-horizontal loginFrm" action="" method="POST">{% csrf_token %}
+			{% block form %}{% endblock %}
 			  <div class="control-group">
 				<label class="checkbox">
 				<input type="checkbox"> Remember me
 				</label>
 			  </div>
+			  <button type="submit" class="btn btn-success">Отправить</button>
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Выйти</button>
 			</form>		
-			<button type="submit" class="btn btn-success">Sign in</button>
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			
 		  </div>
 	</div>
 	</li>
@@ -163,6 +159,7 @@
 	
 	<script src="{% static '/themes/js/bootshop.js' %}"></script>
     <script src="{% static '/themes/js/jquery.lightbox-0.5.js' %}"></script>
+    <script src="{% static '/themes/js/scripts.js' %}"></script>
 	
 
       

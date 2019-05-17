@@ -1,4 +1,6 @@
 from django.db import models
+from setuptools._vendor.six import _meth_self
+#from django import forms
 
 # Create your models here.
 GROUP = (
@@ -39,3 +41,28 @@ class Settings(models.Model):
 	
 	class Meta:
 		db_table = "Settings"
+		
+
+class Subscribers(models.Model):
+	email = models.EmailField()
+	name = models.CharField(max_length=128)
+	
+	def __str__(self):
+		return self.name
+	
+	class Meta:
+		db_table = "Subscribers"
+
+
+
+
+
+
+
+
+
+
+
+
+
+

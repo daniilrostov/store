@@ -10,5 +10,6 @@ urlpatterns = (
 	path('special_offer.html', views.special_offer, name = 'special_offer'),
 	path('dostavka.html', views.dostavka, name = 'dostavka'),
 	path('contact.html', views.contact, name = 'contact'),
+	path('product_summary.html', views.product_summary, name = 'product_summary'),
 	re_path(r'product_details.html/$', views.product_details, name = 'product_details'),
 )
