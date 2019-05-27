@@ -4,11 +4,25 @@ from .import views
 from produkt.models import Produkt, Settings
 from .forms import SubscriberForms
 
-
-
-# Create your views here.
 	
 def produkt(request):
+	form = SubscriberForms(request.POST or None)
+	if request.method == 'POST' and form.is_valid():
+		data = form.cleaned_data
+		#print(data['name'])
+		new_form = form.save()
+	session_key = request.session.session_key
+	print(session_key)
+	produkt = Produkt.objects.filter(status='recomend')
+	latest_produkt = Produkt.objects.filter(status='lost')
+	tea_produkt = Produkt.objects.filter(group='tea')
+	electronic_produkt = Produkt.objects.filter(group='electronic')
+	tea_produkt_count = tea_produkt.count()
+	electronic_produkt_count = electronic_produkt.count()
+	carusel = Settings.objects.get(name='carusel')
+	return render(request, "index.html", {'form' : form, 'carusel' : carusel, 'latest_produkt' : latest_produkt, 'produkt' : produkt, 'tea_produkt' : tea_produkt, 'tea_produkt_count' : tea_produkt_count, 'electronic_produkt' : electronic_produkt, 'electronic_produkt_count': electronic_produkt_count})
+
+def special_offer(request):
 	form = SubscriberForms(request.POST or None)
 	if request.method == 'POST' and form.is_valid():
 		data = form.cleaned_data
@@ -21,10 +35,7 @@ def produkt(request):
 	tea_produkt_count = tea_produkt.count()
 	electronic_produkt_count = electronic_produkt.count()
 	carusel = Settings.objects.get(name='carusel')
-	return render(request, "index.html", {'form' : form, 'carusel' : carusel, 'latest_produkt' : latest_produkt, 'produkt' : produkt, 'tea_produkt' : tea_produkt, 'tea_produkt_count' : tea_produkt_count, 'electronic_produkt' : electronic_produkt, 'electronic_produkt_count': electronic_produkt_count})
-
-def special_offer(request):
-	return render(request, "special_offer.html")
+	return render(request, "special_offer.html", {'form' : form, 'carusel' : carusel, 'latest_produkt' : latest_produkt, 'produkt' : produkt, 'tea_produkt' : tea_produkt, 'tea_produkt_count' : tea_produkt_count, 'electronic_produkt' : electronic_produkt, 'electronic_produkt_count': electronic_produkt_count})
 
 def product_summary(request):
 	produkt = Produkt.objects.filter(status='recomend')
